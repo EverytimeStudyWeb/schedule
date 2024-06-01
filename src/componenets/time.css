@@ -1,0 +1,33 @@
+.time-container {
+    background-color: white;
+    border-left: 2px solid black;
+    width: 500px;
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 10px; 
+    background-color: rgb(246, 250, 238);
+}
+
+.time-container p{
+    cursor: pointer;
+}
+
+.time-container button{
+    background-color: white;
+    color: black;
+    width: 150px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+

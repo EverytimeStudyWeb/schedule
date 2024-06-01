@@ -1,0 +1,45 @@
+table {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 150px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+
+th, td {
+    border: 1.5px solid rgb(163, 161, 161);
+    text-align: center;
+    padding: 8px;
+    color: grey;
+}
+
+td:first-child, th:first-child {
+    width: 30px;
+}
+
+tbody td {
+    height: 100px;
+}
+
+.top-letter {
+    position: absolute;
+    top: 10px;
+    left: 200px;
+}
+
+.top-letter h3 {
+    color: rgb(194, 97, 97);
+}
+
+.plus-btn{
+    position: absolute;
+    top: 70px;
+    right: 190px;
+    width: 40px;
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: white;
+    border: 3px solid black;
+}
+
