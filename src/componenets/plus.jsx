@@ -5,7 +5,7 @@ import Time from './time';
 export default function PlusBtn({ onTimeClick }) {
     const [showTime, setShowTime] = useState(false);
     const [showMicroeconomicsTime, setShowMicroeconomicsTime] = useState(false);
-    let [subject, setSubject] = useState('ㅇㅇ')
+    let [subject, setSubject] = useState('')
 
     const handleTimeClick = (subject) => {
         if (subject === '거시경제학') {

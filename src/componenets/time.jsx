@@ -2,8 +2,7 @@ import './time.css';
 
 export default function Time({ onHighlight, subject }) {
     
-    return (
-        
+    return (  
         <div className='time-container'>
             <h3>aa{subject}</h3>
             <button onClick={() => onHighlight('월', 2, 4)}><p>월 - 11~1시</p></button>
