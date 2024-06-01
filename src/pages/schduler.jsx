@@ -1,9 +1,26 @@
+import { useState } from 'react';
 import './scheduler.css';
+import PlusBtn from '../componenets/plus';
 
-export default function Scheduler({ highlightedCells, onPlusClick }) {
+export default function Scheduler({ onPlusClick }) {
     const numbers = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const headers = ["월", "화", "수", "목", "금"];
     const scheduleData = Array.from({ length: numbers.length }, () => Array(5).fill(''));
+    const [highlightedCells, setHighlightedCells] = useState([]);
+    const [showPlus, setShowPlus] = useState(false);
+    const [showTime, setShowTime] = useState(false);
+
+    const handleHighlight = (day, start, end) => {
+        setHighlightedCells([...highlightedCells, { day, start, end }]);
+    };
+
+    const handlePlusClick = () => {
+        setShowPlus(!showPlus);
+    };
+
+    const handleTimeClick = () => {
+        setShowTime(true);
+    };
 
     highlightedCells.forEach(({ day, start, end }) => {
         const colIndex = headers.indexOf(day);
@@ -24,7 +41,7 @@ export default function Scheduler({ highlightedCells, onPlusClick }) {
                     <h3>2024년 2학기</h3>
                     <h1>시간표1</h1>
                 </div>
-                <button className='plus-btn' onClick={onPlusClick}>+</button>
+                <button className='plus-btn' onClick={handlePlusClick}>+</button>
             </div>
             
             <table>
@@ -58,6 +75,8 @@ export default function Scheduler({ highlightedCells, onPlusClick }) {
                     ))}
                 </tbody>
             </table>
+
+            {showPlus && <PlusBtn onHighlight={handleHighlight}/>}
         </div>
     );
 }
