@@ -1,10 +1,17 @@
+.table-container {
+    max-width: 1280px;
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 350px;
+}
+
 table {
     width: 1200px;
     margin: 0 auto;
-    margin-top: 150px;
     border-collapse: collapse;
     border-radius: 5px;
     margin-bottom: 100px;
+    table-layout: fixed;
 }
 
 th, td {
@@ -12,6 +19,9 @@ th, td {
     text-align: center;
     padding: 8px;
     color: grey;
+    max-width: 100px; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 td:first-child, th:first-child {
@@ -23,23 +33,31 @@ tbody td {
 }
 
 .top-letter {
-    position: absolute;
-    top: 10px;
-    left: 200px;
+    display: flex;
+    justify-content: space-between;
+    width: 1160px;
+    align-items: center;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .top-letter h3 {
     color: rgb(194, 97, 97);
 }
 
-.plus-btn{
-    position: absolute;
-    top: 70px;
+.plus-btn {
     right: 190px;
     width: 40px;
     font-size: 30px;
     border-radius: 5px;
     background-color: white;
     border: 3px solid black;
+    height: 40px;
+    font-size: 30px;
+    padding-bottom: 10px;
 }
 
+.highlight {
+    color: white;
+}
