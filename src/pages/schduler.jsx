@@ -18,21 +18,27 @@ export default function Scheduler() {
 
     const handleHighlight = (day, start, end, subject) => {
         const colIndex = headers.indexOf(day);
+        if (colIndex === -1) return; 
+
         const newCells = [];
-        for (let hour = start; hour <= end; hour++) {
+        let newHighlightedCells = [...highlightedCells];
+
+        for (let hour = start; hour < end; hour++) {
             const rowIndex = numbers.indexOf(hour);
             if (rowIndex !== -1) {
-                const cellIndex = highlightedCells.findIndex(
-                    ({ colIndex: col, rowIndex: row }) => col === colIndex && row === rowIndex
+                const existingCellIndex = newHighlightedCells.findIndex(
+                    cell => cell.colIndex === colIndex && cell.rowIndex === rowIndex
                 );
-                if (cellIndex !== -1) {
-                    highlightedCells.splice(cellIndex, 1);
+                if (existingCellIndex !== -1) {
+                    newHighlightedCells.splice(existingCellIndex, 1); 
                 } else {
-                    newCells.push({ colIndex, rowIndex, subject });
+                    newCells.push({ colIndex, rowIndex, subject }); 
                 }
             }
         }
-        setHighlightedCells([...highlightedCells, ...newCells]);
+
+        newHighlightedCells = [...newHighlightedCells, ...newCells];
+        setHighlightedCells(newHighlightedCells);
     };
 
     const handlePlusClick = () => {
@@ -46,7 +52,7 @@ export default function Scheduler() {
                     <h3>2024년 2학기</h3>
                     <h1>시간표1</h1>
                 </div>
-                <button className='plus-btn' onClick={handlePlusClick}>+</button>
+                <button className='plus-btn' onClick={handlePlusClick}><p>+</p></button>
             </div>
             
             <table>
@@ -66,10 +72,15 @@ export default function Scheduler() {
                                 const cell = highlightedCells.find(
                                     ({ colIndex: col, rowIndex: row }) => col === colIndex && row === rowIndex
                                 );
-                                const isFirstCell = cell && rowIndex === highlightedCells.filter(c => c.colIndex === colIndex).map(c => c.rowIndex).sort((a, b) => a - b)[0];
+
+                                const isFirstCell = cell && rowIndex === highlightedCells
+                                    .filter(c => c.colIndex === colIndex && c.subject === cell.subject)
+                                    .map(c => c.rowIndex)
+                                    .sort((a, b) => a - b)[0];
+
                                 return (
                                     <td
-                                        key={colIndex}
+                                        key={`${colIndex}-${rowIndex}`} 
                                         className={cell ? 'highlight' : ''}
                                         style={cell ? { backgroundColor: subjectColors[cell.subject] } : {}}
                                     >

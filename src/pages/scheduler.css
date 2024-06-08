@@ -48,14 +48,23 @@ tbody td {
 
 .plus-btn {
     right: 190px;
-    width: 40px;
     font-size: 30px;
     border-radius: 5px;
     background-color: white;
-    border: 3px solid black;
-    height: 40px;
-    font-size: 30px;
-    padding-bottom: 10px;
+    border: 2px solid black;
+    width: 42px;
+    height: 38px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-right: 6px;
+}
+
+.plus-btn p{
+    position: absolute;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: 0;
 }
 
 .highlight {
